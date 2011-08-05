@@ -674,6 +674,12 @@ NSInteger compareViewDepth(id obj1, id obj2, void *context)
 
 - (void)reloadData
 {
+	//bail out if not set up yet
+	if (!dataSource || !contentView)
+	{
+		return;
+	}
+	
     //record current index
     previousItemIndex = self.currentItemIndex;
     
@@ -1179,7 +1185,7 @@ NSInteger compareViewDepth(id obj1, id obj2, void *context)
     return index;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gesture shouldReceiveTouch:(UITouch *)touch
+/*- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gesture shouldReceiveTouch:(UITouch *)touch
 {
     if ([gesture isKindOfClass:[UITapGestureRecognizer class]])
     {
@@ -1197,7 +1203,7 @@ NSInteger compareViewDepth(id obj1, id obj2, void *context)
         }
     }
     return YES;
-}
+}*/
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gesture
 {
